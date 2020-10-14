@@ -58,11 +58,11 @@ namespace FlexCoders_Assignment
             //   appId: "",
             //   appSecret: "");
 
-            //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            //{
-            //    ClientId = "",
-            //    ClientSecret = ""
-            //});
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+            {
+                ClientId = "990663344721-pp70oirdj7tipged6i1sfpds2e7qbacd.apps.googleusercontent.com",
+                ClientSecret = "aajj3Ddr0n_sk2gdTW_pMClB"
+            });
         }
     }
 }

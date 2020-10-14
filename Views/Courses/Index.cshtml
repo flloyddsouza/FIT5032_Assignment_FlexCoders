@@ -6,13 +6,12 @@
 
 <h2>Courses</h2>
 
-<p>
-    @if (User.IsInRole("Administrator"))
-    {
-        @Html.ActionLink("Create New", "Create")
-    }
+@if (User.IsInRole("Administrator"))
+{
+    <p> @Html.ActionLink("Create New", "Create") </p>
+}
 
-</p>
+<hr />
 
 
 <div class="card-columns">
@@ -32,5 +31,5 @@
                 </div>
             </a>
         </div>
-     }
+    }
 </div>

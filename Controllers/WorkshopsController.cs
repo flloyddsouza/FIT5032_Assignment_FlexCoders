@@ -10,11 +10,13 @@ using FlexCoders_Assignment.Models;
 
 namespace FlexCoders_Assignment.Controllers
 {
+    [Authorize]
     public class WorkshopsController : Controller
     {
         private Model1Container db = new Model1Container();
 
         // GET: Workshops
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(db.Workshops.ToList());
@@ -36,6 +38,7 @@ namespace FlexCoders_Assignment.Controllers
         }
 
         // GET: Workshops/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             return View();
@@ -46,6 +49,7 @@ namespace FlexCoders_Assignment.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create([Bind(Include = "Id,WorkshopName,WorkShopDescription,WorkshopDateTime,City,Lat,Long,Capicity,ImageURL")] Workshop workshop)
         {
             if (ModelState.IsValid)
@@ -59,6 +63,7 @@ namespace FlexCoders_Assignment.Controllers
         }
 
         // GET: Workshops/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -78,6 +83,7 @@ namespace FlexCoders_Assignment.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "Id,WorkshopName,WorkShopDescription,WorkshopDateTime,City,Lat,Long,Capicity,ImageURL")] Workshop workshop)
         {
             if (ModelState.IsValid)
@@ -90,6 +96,7 @@ namespace FlexCoders_Assignment.Controllers
         }
 
         // GET: Workshops/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -107,6 +114,7 @@ namespace FlexCoders_Assignment.Controllers
         // POST: Workshops/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult DeleteConfirmed(int id)
         {
             Workshop workshop = db.Workshops.Find(id);
