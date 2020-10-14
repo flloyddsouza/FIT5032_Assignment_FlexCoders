@@ -1,0 +1,36 @@
+﻿@model IEnumerable<FlexCoders_Assignment.Models.Course>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Courses</h2>
+
+<p>
+    @if (User.IsInRole("Administrator"))
+    {
+        @Html.ActionLink("Create New", "Create")
+    }
+
+</p>
+
+
+<div class="card-columns">
+
+
+    @foreach (var item in Model)
+    {
+
+        <div class="card bg-light mb-3" style="width: 300px;">
+
+            <a href="@Url.Action("Details", "Courses", new { id = item.Id })">
+                <img class="card-img-top" src=@item.ImageURL alt="Card image cap" width="200" height="112">
+                <div class="card-body">
+                    <h5 class="card-title">@item.CourseName</h5>
+
+
+                </div>
+            </a>
+        </div>
+     }
+</div>

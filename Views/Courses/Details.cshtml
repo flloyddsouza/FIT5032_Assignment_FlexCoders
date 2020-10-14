@@ -1,0 +1,99 @@
+﻿@model FlexCoders_Assignment.Models.Course
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h1>   @Html.DisplayFor(model => model.CourseName) </h1>
+
+<div class="row">
+    <div class="col-12 col-sm-6 col-md-8">
+
+        <hr />
+        <img src="@Url.Content(Model.ImageURL)" width="300" height="150" />
+        <hr />
+        <p> @Html.DisplayFor(model => model.CourseDescription) </p>
+        <hr />
+
+        <dl class="dl-horizontal">
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DateUpdated)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateUpdated)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Contributers)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Contributers)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Language)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Language)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.DifficultyLevel)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DifficultyLevel)
+            </dd>
+
+
+        </dl>
+    </div>
+
+    <div class="col-6 col-md-4">
+
+        @if (Model.Links != null)
+        {
+            <table class="table">
+                <tr>
+                    <th>
+                        Videos
+                    </th>
+                    <th></th>
+
+                </tr>
+
+                @foreach (var item in Model.Links)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            <iframe width="200" height="100" src=@item.LinkURL frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        }
+    </div>
+
+
+</div>
+<p>
+    @if (User.IsInRole("Administrator"))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id })
+        <h>|</h>
+        @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
+        <h>|</h>
+    }
+
+    @Html.ActionLink("Back to List", "Index")
+</p>

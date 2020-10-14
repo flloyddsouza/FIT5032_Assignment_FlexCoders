@@ -1,0 +1,83 @@
+﻿@model FlexCoders_Assignment.Models.Workshop
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Workshop</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkshopName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkshopName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkShopDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkShopDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WorkshopDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WorkshopDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Long)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Long)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Capicity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Capicity)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageURL)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageURL)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
