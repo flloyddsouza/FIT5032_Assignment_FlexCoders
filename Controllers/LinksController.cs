@@ -19,14 +19,24 @@ namespace FlexCoders_Assignment.Controllers
 
         // GET: Links/Create
         [Authorize(Roles = "Administrator")]
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
             Course data = TempData["mydata"] as Course;
-            if (data == null)
+            int courseId;
+         
+            if(data != null)
+            {
+                courseId = data.Id;
+            } else if (id != null)
+            {
+                courseId = (int)id;
+            }
+            else
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ViewBag.CourseId = new SelectList(db.Courses, "Id", "CourseName", data.Id);
+    
+            ViewBag.CourseId = new SelectList(db.Courses, "Id", "CourseName", courseId);
             return View();
         }
 

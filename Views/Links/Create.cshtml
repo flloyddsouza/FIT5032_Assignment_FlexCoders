@@ -6,57 +6,59 @@
 
 <h2>Add Links</h2>
 
+<div class="row">
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+    <div class="col-12 col-sm-6 col-md-6">
 
-    <div class="form-horizontal">
-        <h4>Links</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Links</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.LinkURL, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.LinkURL, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.LinkURL, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.LinkURL, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.LinkURL, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.LinkURL, "", new { @class = "text-danger" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-10">
-                @Html.DropDownList("CourseId", null, htmlAttributes: new { @class = "form-control", style = "display:none" })
+            <div class="form-group">
+                <div class="col-md-10">
+                    @Html.DropDownList("CourseId", null, htmlAttributes: new { @class = "form-control", style = "display:none" })
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Add Link" class="btn btn-info" />
+            <div class="form-group d-flex">
+                <div class="p-2 col-md-7"><input type="button" class="btn btn-secondary" value="Done" onclick="location.href='@Url.Action("Index", "Courses")'" /> </div>
+                
+                <div class="p-2 col-md-7"> <input type="submit" value="Add Link" class="btn btn-primary" /> </div>
             </div>
+
+
+
+      
+
         </div>
-
-
-        <div class="col-md-offset-2 col-md-10">
-            <input type="button" class="btn btn-default" value="Done" onclick="location.href='@Url.Action("Index", "Courses")'" />
-        </div>
-
-
-
+        }
 
     </div>
-}
 
 
-
-
+</div>
 
 
 @section Scripts {

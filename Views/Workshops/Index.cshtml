@@ -15,23 +15,38 @@
 
 <hr />
 
-<div class="card-columns">
+
+<main role="main">
 
 
-    @foreach (var item in Model)
-    {
 
-        <div class="card bg-light mb-3" style="width: 300px;">
-
-            <a href="@Url.Action("Details", "Workshops", new { id = item.Id })">
-                <img class="card-img-top" src=@item.ImageURL alt="Card image cap" width="200" height="112">
-                <div class="card-body">
-                    <h5 class="card-title">@item.WorkshopName</h5>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model)
+                {
 
 
-                </div>
-            </a>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+
+
+                            <img class="card-img-top" src=@item.ImageURL width="100%" height="150" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail">
+                            <div class="card-body">
+                                <p class="card-text">@item.WorkshopName</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='@Url.Action("Details", "Courses", new { id = item.Id })'">View</button>
+                                    </div>
+                                    <small class="text-muted">By @item.WorkshopDateTime</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                }
+            </div>
         </div>
-    }
-</div>
+    </div>
 
+</main>
