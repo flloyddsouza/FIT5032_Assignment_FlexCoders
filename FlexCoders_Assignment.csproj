@@ -221,6 +221,7 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\carousel.css" />
     <Content Include="Content\CustomStyle.css" />
     <Content Include="Content\logo_zoom.png" />
     <Content Include="Content\signin.css" />
@@ -228,6 +229,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\1567584871web-development.jpeg" />
+    <Content Include="Images\ios-14__ck3ddhhzecuq_og.png" />
+    <Content Include="Images\most-popular-programming-languages-of-2018-1280x720.png" />
+    <Content Include="Images\photo-1484417894907-623942c8ee29.jpg" />
+    <Content Include="Images\photo-1569012871812-f38ee64cd54c.jpg" />
+    <Content Include="Images\programming-101-workshop.jpg" />
     <Content Include="Models\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
