@@ -17,13 +17,13 @@ namespace FlexCoders_Assignment.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Enter Link Name")]
-        [Display(Name = "Name")]
+        [Required(ErrorMessage = "Enter Video Name")]
+        [Display(Name = "Video Name")]
         [StringLength(60, MinimumLength = 4)]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Enter Link URL")]
-        [Display(Name = "Link URL")]
+        [Required(ErrorMessage = "Enter Video URL")]
+        [Display(Name = "Video URL")]
         [Url]
         public string LinkURL { get; set; }
         public int CourseId { get; set; }

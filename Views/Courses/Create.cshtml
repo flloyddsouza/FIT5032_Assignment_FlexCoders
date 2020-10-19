@@ -5,74 +5,85 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom" style="height:100px;">
+    <h1>New Course</h1>
+</div>
 
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Course</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.CourseName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CourseName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CourseName, "", new { @class = "text-danger" })
+<div class="row">
+    <div class="text-left col-md-7">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal needs-validation" novalidate>
+              
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CourseName, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CourseName, new { htmlAttributes = new { @class = "form-control" , @Placeholder="Eg. Advanced Java"} })                                         
+                        @Html.ValidationMessageFor(model => model.CourseName, "", new { @class = "text-danger" })
+                       
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CourseDescription, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.CourseDescription, new { cols = 35, @rows = 3, @class = "form-control", @Placeholder = "Enter Description here." })
+                        @Html.ValidationMessageFor(model => model.CourseDescription, "", new { @class = "text-danger" })
+                    </div>
+                  
+                </div>
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Contributers, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Contributers, new { htmlAttributes = new { @class = "form-control", @Placeholder = "Eg. ABM Russel" } })
+                        @Html.ValidationMessageFor(model => model.Contributers, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Language, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Language, new { htmlAttributes = new { @class = "form-control", @Placeholder = "Eg. Python" } })
+                        @Html.ValidationMessageFor(model => model.Language, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DifficultyLevel, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-10">
+                        @Html.DropDownListFor(model => model.DifficultyLevel, Enum.GetNames(typeof(FlexCoders_Assignment.Models.Course.DifficultyType)).Select(e => new SelectListItem { Text = e }), "Select Difficult Level", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.DifficultyLevel, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ImageURL, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ImageURL, new { htmlAttributes = new { @class = "form-control", @Placeholder = "Enter a Image URL" } })
+                        @Html.ValidationMessageFor(model => model.ImageURL, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group d-flex flex-row-reverse">
+                    <div class="p-2 col-md-4">
+                        <input type="submit" value="Next" style="width:70px;" class="btn btn-primary" />
+                    </div>
+                </div>
+
+
             </div>
-        </div>
+        }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.CourseDescription, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CourseDescription, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CourseDescription, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Contributers, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Contributers, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Contributers, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Language, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Language, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Language, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DifficultyLevel, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownListFor(model => model.DifficultyLevel, Enum.GetNames(typeof(FlexCoders_Assignment.Models.Course.DifficultyType)).Select(e => new SelectListItem { Text = e }), "Select Difficult Level", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.DifficultyLevel, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ImageURL, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ImageURL, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ImageURL, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Next" class="btn btn-default" />
-            </div>
-        </div>
     </div>
-}
+</div>
 
 <div>
     @Html.ActionLink("Back to List", "Index")

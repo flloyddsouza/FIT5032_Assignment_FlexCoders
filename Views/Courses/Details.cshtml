@@ -4,13 +4,16 @@
     ViewBag.Title = "Details";
 }
 
-<h1>   @Html.DisplayFor(model => model.CourseName) </h1>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom" style="height:100px;">
+    <h1>@Html.DisplayFor(model => model.CourseName)</h1>
+</div>
+
+
 
 <div class="row">
 
     <div class="col-12 col-sm-6 col-md-8">
 
-        <hr />
         <img src="@Url.Content(Model.ImageURL)" width="300" height="150" />
         <hr />
 
@@ -60,7 +63,7 @@
       
     </div>
 
-        <div class="col-6 col-md-4">
+     <div class="col-6 col-md-4">
 
             @if (Model.Links != null)
             {
@@ -88,7 +91,7 @@
                 </table>
 
             }
-        </div>
+     </div>
 
 
     </div>

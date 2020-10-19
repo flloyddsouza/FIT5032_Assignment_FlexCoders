@@ -4,115 +4,121 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom" style="height:100px;">
+    <h1>Edit Course</h1>
+</div>
 
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-        <h4>Course</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CourseName, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CourseName, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CourseName, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CourseDescription, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CourseDescription, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CourseDescription, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Contributers, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Contributers, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Contributers, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Language, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Language, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Language, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DifficultyLevel, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-
-                @Html.DropDownListFor(model => model.DifficultyLevel, Enum.GetNames(typeof(FlexCoders_Assignment.Models.Course.DifficultyType)).Select(e => new SelectListItem { Text = e }), "Select Difficult Level", new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.DifficultyLevel, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ImageURL, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ImageURL, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ImageURL, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
-
-    </div>
-}
-
-@Html.ActionLink("Create", "Create", new { controller = "Links", action = "Create" , id = Model.Id })
-
-@if (Model.Links != null)
-{
-    <table class="table">
-        <tr>
-            <th>
-                Name
-            </th>
-            <th>
-                Link
-            </th>
-
-            <th></th>
-        </tr>
-
-        @foreach (var item in Model.Links)
+<div class="row">
+    <div class="col-12 col-sm-6 col-md-7">
+        @using (Html.BeginForm())
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Name)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LinkURL)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { controller = "Links", action = "Edit", id = item.Id }) |
+            @Html.AntiForgeryToken()
 
-                    @Html.ActionLink("Delete", "Delete", new { controller = "Links", action = "Delete", id = item.Id })
-                </td>
-            </tr>
+            <div class="form-horizontal">
+
+                @Html.HiddenFor(model => model.Id)
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CourseName, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CourseName, new { htmlAttributes = new { @class = "form-control", @Placeholder = "Eg. Advanced Java" } })
+                        @Html.ValidationMessageFor(model => model.CourseName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CourseDescription, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CourseDescription, new { htmlAttributes = new { @class = "form-control", @Placeholder = "Enter Description here." } })
+                        @Html.ValidationMessageFor(model => model.CourseDescription, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Contributers, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Contributers, new { htmlAttributes = new { @class = "form-control", @Placeholder = "Eg. ABM Russel" } })
+                        @Html.ValidationMessageFor(model => model.Contributers, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Language, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Language, new { htmlAttributes = new { @class = "form-control", @Placeholder = "Eg. Python" } })
+                        @Html.ValidationMessageFor(model => model.Language, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.DifficultyLevel, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-10">
+
+                        @Html.DropDownListFor(model => model.DifficultyLevel, Enum.GetNames(typeof(FlexCoders_Assignment.Models.Course.DifficultyType)).Select(e => new SelectListItem { Text = e }), "Select Difficult Level", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.DifficultyLevel, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ImageURL, htmlAttributes: new { @class = "control-label col-md-4" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ImageURL, new { htmlAttributes = new { @class = "form-control", @Placeholder = "Enter a Image URL" } })
+                        @Html.ValidationMessageFor(model => model.ImageURL, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group d-flex flex-row-reverse">
+                    <div class="p-2 col-md-4">
+                        <input type="submit" value="Save" style="width:70px;" class="btn btn-primary" />
+                    </div>
+                </div>
+
+            </div>
         }
 
-    </table>
+    </div>
 
-}
+    <div class="" col-6 col-md-4"">
+        @Html.ActionLink("Create", "Create", new { controller = "Links", action = "Create", id = Model.Id })
+
+        @if (Model.Links != null)
+        {
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            Video
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Links)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.Name)
+                            </td>
+                            <td>
+                                @Html.ActionLink("Edit", "Edit", new { controller = "Links", action = "Edit", id = item.Id }) |
+
+                                @Html.ActionLink("Delete", "Delete", new { controller = "Links", action = "Delete", id = item.Id })
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+
+        }
+
+
+    </div>
+</div>
+
+
 
 
 
@@ -120,6 +126,14 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+
+    <script>
+        $(document).ready(function () {
+            $('.table').DataTable();
+        });
+    </script>
 }
+
