@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FlexCoders_Assignment.Models;
+using FlexCoders_Assignment.Utils;
 using Microsoft.AspNet.Identity;
 
 namespace FlexCoders_Assignment.Controllers
@@ -68,6 +69,22 @@ namespace FlexCoders_Assignment.Controllers
                 bookings.userID = User.Identity.GetUserId();
                 db.Bookings.Add(bookings);
                 db.SaveChanges();
+
+                try
+                {
+                    String toEmail = User.Identity.GetUserName();
+                    String subject = "Registeration Confirmed";
+                    String contents = "Hello, You have registered for the workshop " + bookings.workshopName + ". The time for the workshop is " + bookings.dateAndTime;
+
+
+                    EmailSender es = new EmailSender();
+                    es.Send(toEmail, subject, contents);
+                }
+                catch
+                {
+
+                }
+
                 return RedirectToAction("Index");
             }
 
