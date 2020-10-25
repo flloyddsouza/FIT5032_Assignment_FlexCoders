@@ -16,7 +16,8 @@
     <link href="~/Content/carousel.css" rel="stylesheet" />
   
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.22/css/jquery.dataTables.css">
-
+ 
+<link href="~/Content/fullcalendar.min.css" rel="stylesheet" />
 
 
 
@@ -51,6 +52,10 @@
                     <a class="nav-link" href="@Url.Action("Contact", "Home")">Contact</a>
                 </li>
 
+                <li>
+                    <a class="nav-link" href="@Url.Action("Index", "Bookings")">Bookings</a>
+                </li>
+
 
             </ul>
 
@@ -79,10 +84,11 @@
     @RenderSection("scripts", required: false)
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="~/Scripts/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.js"></script>
-
+    <script src="~/Scripts/fullcalendar/fullcalendar.js"></script>
+    <script src="~/Scripts/calendar.js"></script>
 
 
 </body>

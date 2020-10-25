@@ -10,43 +10,54 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.userID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.workshopID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.dateAndTime)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.workshopName)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.userID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.workshopID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dateAndTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.workshopName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
-    </tr>
+<div id="calendar"></div>
+<div style="display: none">
+
+    <table class="table">
+
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.userID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.workshopID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.dateAndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.workshopName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr  class="events">
+                <td>
+                    @Html.DisplayFor(modelItem => item.userID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.workshopID)
+                </td>
+                <td  class="start">
+                    @Html.DisplayFor(modelItem => item.dateAndTime)
+                </td>
+                <td class="title">
+                    @Html.DisplayFor(modelItem => item.workshopName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+@section Scripts {
+ @Scripts.Render("~/bundles/fullcalendar")
 }
-
-</table>
