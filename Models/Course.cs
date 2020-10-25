@@ -71,7 +71,7 @@ namespace FlexCoders_Assignment.Models
         [Display(Name = "Image URL")]
         [Url]
         public string ImageURL { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Links> Links { get; set; }
     }

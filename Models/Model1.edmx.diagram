@@ -8,7 +8,8 @@
         <EntityTypeShape EntityType="Model1.Course" Width="1.5" PointX="0.75" PointY="0.75" />
         <EntityTypeShape EntityType="Model1.Links" Width="1.5" PointX="3.25" PointY="1" />
         <AssociationConnector Association="Model1.CourseLinks" />
-        <EntityTypeShape EntityType="Model1.Workshop" Width="1.5" PointX="5.875" PointY="1" />
+        <EntityTypeShape EntityType="Model1.Workshop" Width="1.5" PointX="9.125" PointY="1.75" />
+        <EntityTypeShape EntityType="Model1.Bookings" Width="1.5" PointX="6.125" PointY="1.875" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

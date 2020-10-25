@@ -2,7 +2,7 @@
 -- --------------------------------------------------
 -- Entity Designer DDL Script for SQL Server 2005, 2008, 2012 and Azure
 -- --------------------------------------------------
--- Date Created: 10/14/2020 17:37:33
+-- Date Created: 10/26/2020 00:39:11
 -- Generated from EDMX file: C:\Users\dsouz\source\repos\FlexCoders_Assignment\Models\Model1.edmx
 -- --------------------------------------------------
 
@@ -17,11 +17,26 @@ GO
 -- Dropping existing FOREIGN KEY constraints
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[FK_CourseLinks]', 'F') IS NOT NULL
+    ALTER TABLE [dbo].[Links] DROP CONSTRAINT [FK_CourseLinks];
+GO
 
 -- --------------------------------------------------
 -- Dropping existing tables
 -- --------------------------------------------------
 
+IF OBJECT_ID(N'[dbo].[Courses]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Courses];
+GO
+IF OBJECT_ID(N'[dbo].[Links]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Links];
+GO
+IF OBJECT_ID(N'[dbo].[Workshops]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Workshops];
+GO
+IF OBJECT_ID(N'[dbo].[Bookings]', 'U') IS NOT NULL
+    DROP TABLE [dbo].[Bookings];
+GO
 
 -- --------------------------------------------------
 -- Creating all tables
@@ -63,6 +78,16 @@ CREATE TABLE [dbo].[Workshops] (
 );
 GO
 
+-- Creating table 'Bookings'
+CREATE TABLE [dbo].[Bookings] (
+    [Id] int IDENTITY(1,1) NOT NULL,
+    [userID] nvarchar(max)  NOT NULL,
+    [workshopID] int  NOT NULL,
+    [dateAndTime] datetime  NOT NULL,
+    [workshopName] nvarchar(max)  NOT NULL
+);
+GO
+
 -- --------------------------------------------------
 -- Creating all PRIMARY KEY constraints
 -- --------------------------------------------------
@@ -82,6 +107,12 @@ GO
 -- Creating primary key on [Id] in table 'Workshops'
 ALTER TABLE [dbo].[Workshops]
 ADD CONSTRAINT [PK_Workshops]
+    PRIMARY KEY CLUSTERED ([Id] ASC);
+GO
+
+-- Creating primary key on [Id] in table 'Bookings'
+ALTER TABLE [dbo].[Bookings]
+ADD CONSTRAINT [PK_Bookings]
     PRIMARY KEY CLUSTERED ([Id] ASC);
 GO
 

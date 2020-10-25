@@ -28,5 +28,6 @@ namespace FlexCoders_Assignment.Models
         public virtual DbSet<Course> Courses { get; set; }
         public virtual DbSet<Links> Links { get; set; }
         public virtual DbSet<Workshop> Workshops { get; set; }
+        public virtual DbSet<Bookings> Bookings { get; set; }
     }
 }

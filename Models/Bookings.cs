@@ -11,23 +11,13 @@ namespace FlexCoders_Assignment.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
-    public partial class Links
+    
+    public partial class Bookings
     {
         public int Id { get; set; }
-
-        [Required(ErrorMessage = "Enter Video Name")]
-        [Display(Name = "Video Name")]
-        [StringLength(60, MinimumLength = 4)]
-        public string Name { get; set; }
-
-        [Required(ErrorMessage = "Enter Video URL")]
-        [Display(Name = "Video URL")]
-        [Url]
-        public string LinkURL { get; set; }
-        public int CourseId { get; set; }
-
-        public virtual Course Course { get; set; }
+        public string userID { get; set; }
+        public int workshopID { get; set; }
+        public System.DateTime dateAndTime { get; set; }
+        public string workshopName { get; set; }
     }
 }

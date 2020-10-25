@@ -87,4 +87,8 @@
     }
 
     @Html.ActionLink("Back to List", "Index")
+
+   
 </p>>
+
+<button type="button" class="btn btn-outline-secondary" onclick="location.href='@Url.Action("Create", "Bookings", new { id = Model.Id })'"/>

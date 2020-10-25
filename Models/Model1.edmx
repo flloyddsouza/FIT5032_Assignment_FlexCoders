@@ -9,6 +9,7 @@
     <EntitySet Name="Courses" EntityType="Model1.Store.Courses" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Links" EntityType="Model1.Store.Links" store:Type="Tables" Schema="dbo" />
     <EntitySet Name="Workshops" EntityType="Model1.Store.Workshops" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Bookings" EntityType="Model1.Store.Bookings" store:Type="Tables" Schema="dbo" />
     <AssociationSet Name="CourseLinks" Association="Model1.Store.CourseLinks">
       <End Role="Course" EntitySet="Courses" />
       <End Role="Links" EntitySet="Links" />
@@ -50,6 +51,16 @@
     <Property Name="Capicity" Type="int" Nullable="false" />
     <Property Name="ImageURL" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
+  <EntityType Name="Bookings">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userID" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="workshopID" Type="int" Nullable="false" />
+    <Property Name="dateAndTime" Type="datetime" Nullable="false" />
+    <Property Name="workshopName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
   <Association Name="CourseLinks">
     <End Role="Course" Type="Model1.Store.Courses" Multiplicity="1" />
     <End Role="Links" Type="Model1.Store.Links" Multiplicity="*" />
@@ -74,6 +85,7 @@
             <End Role="Links" EntitySet="Links" />
           </AssociationSet>
           <EntitySet Name="Workshops" EntityType="Model1.Workshop" />
+          <EntitySet Name="Bookings" EntityType="Model1.Bookings" />
         </EntityContainer>
         <EntityType Name="Course">
           <Key>
@@ -125,6 +137,16 @@
           <Property Name="Capicity" Type="Int32" Nullable="false" />
           <Property Name="ImageURL" Type="String" Nullable="false" />
         </EntityType>
+        <EntityType Name="Bookings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userID" Type="String" Nullable="false" />
+          <Property Name="workshopID" Type="Int32" Nullable="false" />
+          <Property Name="dateAndTime" Type="DateTime" Nullable="false" />
+          <Property Name="workshopName" Type="String" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -167,6 +189,17 @@
           <ScalarProperty Name="Long" ColumnName="Long" />
           <ScalarProperty Name="Capicity" ColumnName="Capicity" />
           <ScalarProperty Name="ImageURL" ColumnName="ImageURL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bookings">
+      <EntityTypeMapping TypeName="IsTypeOf(Model1.Bookings)">
+        <MappingFragment StoreEntitySet="Bookings">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="userID" ColumnName="userID" />
+          <ScalarProperty Name="workshopID" ColumnName="workshopID" />
+          <ScalarProperty Name="dateAndTime" ColumnName="dateAndTime" />
+          <ScalarProperty Name="workshopName" ColumnName="workshopName" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
