@@ -8,17 +8,24 @@
     <h1>@Html.DisplayFor(model => model.CourseName)</h1>
 </div>
 
-
+<div class="row">
+    <div class="col-4">
+        <img src="@Url.Content(Model.ImageURL)" width="300" height="150" />
+    </div>
+    <div class="col-8">
+        <p style="text-align: justify;"> @Html.DisplayFor(model => model.CourseDescription) </p>
+    </div>
+</div>
 
 <div class="row">
 
     <div class="col-12 col-sm-6 col-md-8">
 
-        <img src="@Url.Content(Model.ImageURL)" width="300" height="150" />
-        <hr />
+        
+       
 
 
-        <p style="text-align: justify;"> @Html.DisplayFor(model => model.CourseDescription) </p>
+        
         <hr />
 
 
@@ -64,6 +71,7 @@
     </div>
 
      <div class="col-6 col-md-4">
+         <br />
 
             @if (Model.Links != null)
             {

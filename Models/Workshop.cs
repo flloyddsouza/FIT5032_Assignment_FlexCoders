@@ -25,13 +25,13 @@ namespace FlexCoders_Assignment.Models
 
         [Required(ErrorMessage = "Enter Workshop Description")]
         [Display(Name = "Description")]
-        [StringLength(60, MinimumLength = 15)]
+        [StringLength(500, MinimumLength = 15)]
         public string WorkShopDescription { get; set; }
 
         [Required(ErrorMessage = "Select Workshop Date and Time")]
         [Display(Name = "Date and Time")]
         [DataType(DataType.Date)]
-        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy  hh:mm tt}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd-MM-yyyy  hh:mm}")]
         public System.DateTime WorkshopDateTime { get; set; }
 
         [Required(ErrorMessage = "Enter the Name of City")]

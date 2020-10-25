@@ -5,85 +5,35 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Workshop</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.WorkshopName)
-        </dt>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom" style="height:100px;">
+    <h1>Delete Course</h1>
+</div>
 
-        <dd>
-            @Html.DisplayFor(model => model.WorkshopName)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.WorkShopDescription)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.WorkShopDescription)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.WorkshopDateTime)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.WorkshopDateTime)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.City)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Lat)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Lat)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Long)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Long)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Capicity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Capicity)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ImageURL)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ImageURL)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+<div class="col-md-7 center">
+    <div class="card">
+        <div class="card-header">
+            Alert
         </div>
-    }
+        <div class="card-body">
+            <h5 class="card-title">Do you really want to delete @Model.WorkshopName ?</h5>
+            <div class="d-flex bd-highlight mb-3">
+                <div class="mr-auto p-2 bd-highlight">
+                    <a href="#" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "Workshops")'">Cancel</a>
+                </div>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="p-2 bd-highlight form-actions">
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                    </div>
+
+                }
+            </div>
+
+
+        </div>
+    </div>
 </div>
