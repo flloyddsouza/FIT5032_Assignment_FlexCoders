@@ -1,0 +1,38 @@
+﻿@model FlexCoders_Assignment.Models.AspNetUser
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom" style="height:100px;">
+    <h1>Delete User</h1>
+</div>
+
+
+<div class="col-md-7 center">
+    <div class="card">
+        <div class="card-header">
+            Alert
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Do you really want to delete @Model.UserName Account?</h5>
+            <div class="d-flex bd-highlight mb-3">
+                <div class="mr-auto p-2 bd-highlight">
+                    <a href="#" class="btn btn-primary" onclick="location.href='@Url.Action("Index", "AspNetUsers")'">Cancel</a>
+                </div>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="p-2 bd-highlight form-actions">
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                    </div>
+
+                }
+            </div>
+
+
+        </div>
+    </div>
+</div>

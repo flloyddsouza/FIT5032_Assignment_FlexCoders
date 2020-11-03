@@ -13,10 +13,10 @@ namespace FlexCoders_Assignment.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Model1Container : DbContext
+    public partial class Model2Container : DbContext
     {
-        public Model1Container()
-            : base("name=Model1Container")
+        public Model2Container()
+            : base("name=Model2Container")
         {
         }
     
@@ -25,11 +25,7 @@ namespace FlexCoders_Assignment.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Course> Courses { get; set; }
-        public virtual DbSet<Links> Links { get; set; }
-        public virtual DbSet<Workshop> Workshops { get; set; }
-        public virtual DbSet<Bookings> Bookings { get; set; }
-
-        public System.Data.Entity.DbSet<FlexCoders_Assignment.Models.AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
     }
 }

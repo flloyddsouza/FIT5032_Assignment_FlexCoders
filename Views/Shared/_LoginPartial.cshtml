@@ -6,14 +6,21 @@
     @Html.AntiForgeryToken()
 
 <ul class="nav navbar-nav navbar-right">
-    <li>
-        <a class="nav-link" href="@Url.Action("Index", "Manage")"> @User.Identity.GetUserName()  </a>
-    </li>
 
-    <li>
-        <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
-    </li>
-</ul>
+    @if (User.IsInRole("Administrator"))
+    {
+        <li>
+            <a class="nav-link" href="@Url.Action("Index", "AspNetUsers")">Users</a>
+        </li>
+    }
+        <li>
+            <a class="nav-link" href="@Url.Action("Index", "Manage")"> @User.Identity.GetUserName()  </a>
+        </li>
+
+        <li>
+            <a class="nav-link" href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+        </li>
+    </ul>
     }
 }
 else
