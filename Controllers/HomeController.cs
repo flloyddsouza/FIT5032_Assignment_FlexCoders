@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FlexCoders_Assignment.Models;
+using FlexCoders_Assignment.Utils;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -23,9 +25,40 @@ namespace FlexCoders_Assignment.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            return View(new SendEmailViewModel());
+        }
+
+
+        [HttpPost]
+        public ActionResult Contact(SendEmailViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    String fromEmail = model.ToEmail;
+                    String subject = model.Subject;
+                    String contents = model.Contents + "Email of Person: " + fromEmail;
+
+                    EmailSender es = new EmailSender();
+
+                    //.Send("(FromEmail)", "(ToEmail)", subject, contents);
+                    es.Send("dsouzaflloyd.11@gmail.com", "flloyd.1996@gmail.com", subject, contents);
+
+                    ViewBag.Result = "Email has been send.";
+
+                    ModelState.Clear();
+
+                    return View(new SendEmailViewModel());
+                }
+                catch
+                {
+                    return View();
+                }
+            }
 
             return View();
         }
+
     }
 }

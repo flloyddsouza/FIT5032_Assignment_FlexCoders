@@ -12,10 +12,10 @@ namespace FlexCoders_Assignment.Utils
         // Please use your API KEY here.
         private const String API_KEY = "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";
 
-        public void Send(String toEmail, String subject, String contents)
+        public void Send(String fromEmail, String toEmail, String subject, String contents)
         {
             var client = new SendGridClient(API_KEY);
-            var from = new EmailAddress("dsouzaflloyd.11@gmail.com", "FlexCoders Web Application");
+            var from = new EmailAddress(fromEmail, "FlexCoders Web Application");
             var to = new EmailAddress(toEmail, "");
             var plainTextContent = contents;
             var htmlContent = "<p>" + contents + "</p>";

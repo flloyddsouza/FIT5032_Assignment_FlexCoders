@@ -78,7 +78,7 @@ namespace FlexCoders_Assignment.Controllers
 
 
                     EmailSender es = new EmailSender();
-                    es.Send(toEmail, subject, contents);
+                    es.Send("dsouzaflloyd.11@gmail.com",toEmail, subject, contents);
                 }
                 catch
                 {

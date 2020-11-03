@@ -9,19 +9,30 @@
     <h1>@Html.DisplayFor(model => model.WorkshopName)</h1>
 </div>
 
+<div id="map" style="height:300px"></div>
+
+<br />
+<br />
+
 <div class="row">
     <div class="col-4">
         <img src="@Url.Content(Model.ImageURL)" width="300" height="150" />
     </div>
     <div class="col-8">
         <p style="text-align: justify;"> @Html.DisplayFor(model => model.WorkShopDescription) </p>
+        <div class="row">
+            <button type="button" class="btn btn-primary" onclick="location.href='@Url.Action("Create", "Bookings", new { id = Model.Id })'">
+                Register for Workshop
+            </button>
+        </div>
     </div>
 </div>
 
 
+
 <div class="col-12 col-sm-6 col-md-8">
 
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal coordinates">
 
         <dt>
             @Html.DisplayNameFor(model => model.WorkshopDateTime)
@@ -35,23 +46,19 @@
             @Html.DisplayNameFor(model => model.City)
         </dt>
 
-        <dd>
+        <dd class="description" hidden>
             @Html.DisplayFor(model => model.City)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Lat)
-        </dt>
+      
 
-        <dd>
+        <dd class="latitude" hidden>
             @Html.DisplayFor(model => model.Lat)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Long)
-        </dt>
+      
 
-        <dd>
+        <dd class="longitude">
             @Html.DisplayFor(model => model.Long)
         </dd>
 
@@ -65,11 +72,7 @@
 
 
     </dl>
-    <div class="row">
-        <button type="button" class="btn btn-primary"  onclick="location.href='@Url.Action("Create", "Bookings", new { id = Model.Id })'">
-            Register for Workshop
-        </button>
-    </div>
+   
 </div>
 
 <br />
@@ -82,9 +85,6 @@
         @Html.ActionLink("Delete", "Delete", new { id = Model.Id })
         <h>|</h>
     }
-
     @Html.ActionLink("Back to List", "Index")
-
-   
 </p>>
 
