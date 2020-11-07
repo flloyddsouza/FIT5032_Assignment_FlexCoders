@@ -9,6 +9,10 @@ using System.Web.Mvc;
 using FlexCoders_Assignment.Models;
 using FlexCoders_Assignment.Utils;
 using Microsoft.AspNet.Identity;
+/*
+ *  Author Flloyd Dsouza
+ *  This controller manages the bookings
+ */
 
 namespace FlexCoders_Assignment.Controllers
 {
@@ -38,6 +42,8 @@ namespace FlexCoders_Assignment.Controllers
             return View(bookings);
         }
 
+
+        //Registering for a workshop
         // GET: Bookings/Create
        public ActionResult Create(int? id)
         {
@@ -62,6 +68,7 @@ namespace FlexCoders_Assignment.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(true)]
         public ActionResult Create([Bind(Include = "Id,workshopID,dateAndTime,workshopName")] Bookings bookings)
         {
             if (ModelState.IsValid)
@@ -115,6 +122,7 @@ namespace FlexCoders_Assignment.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(true)]
         public ActionResult Edit([Bind(Include = "Id,userID,workshopID,dateAndTime,workshopName")] Bookings bookings)
         {
             if (ModelState.IsValid)

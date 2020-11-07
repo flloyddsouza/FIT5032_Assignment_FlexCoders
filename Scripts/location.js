@@ -13,6 +13,7 @@ $(".coordinates").each(function () {
     var longitude = $(".longitude", this).text().trim();
     var latitude = $(".latitude", this).text().trim();
     var description = $(".description", this).text().trim();
+
     // Create a point data structure to hold the values.
     var point = {
         "latitude": latitude,
@@ -33,8 +34,10 @@ var map = new mapboxgl.Map({
 });
 
 for (i = 0; i < locations.length; i++) {
+    console.log(locations[i])
     var marker = new mapboxgl.Marker()
         .setLngLat([locations[0].longitude, locations[0].latitude])
+        .setPopup(new mapboxgl.Popup().setHTML("Name: " + locations[i].description)) // add popup
         .addTo(map);
 }
 
@@ -73,7 +76,8 @@ map.on('load', function () {
         }
     });
     map.addControl(new MapboxGeocoder({
-        accessToken: mapboxgl.accessToken
+        accessToken: mapboxgl.accessToken,
+        marker:true
     }));;
     map.addControl(new mapboxgl.NavigationControl());
     // When a click event occurs on a feature in the places layer, open a popup at the
@@ -87,10 +91,14 @@ map.on('load', function () {
         while (Math.abs(e.lngLat.lng - coordinates[0]) > 180) {
             coordinates[0] += e.lngLat.lng > coordinates[0] ? 360 : -360;
         }
+
+        
         new mapboxgl.Popup()
             .setLngLat(coordinates)
             .setHTML(description)
             .addTo(map);
+
+        
     });
     // Change the cursor to a pointer when the mouse is over the places layer.
     map.on('mouseenter', 'places', function () {

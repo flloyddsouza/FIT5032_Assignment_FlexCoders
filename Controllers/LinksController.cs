@@ -7,6 +7,12 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FlexCoders_Assignment.Models;
+/*
+ *  Author Flloyd Dsouza
+ *  This controller manages the Links of Courses
+ */
+
+
 
 namespace FlexCoders_Assignment.Controllers
 {
@@ -45,6 +51,7 @@ namespace FlexCoders_Assignment.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(true)]
         [Authorize(Roles = "Administrator")]
         public ActionResult Create([Bind(Include = "Id,Name,LinkURL,CourseId")] Links links)
         {
@@ -84,6 +91,7 @@ namespace FlexCoders_Assignment.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(true)]
         [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "Id,Name,LinkURL,CourseId")] Links links, string returnUrl)
         {

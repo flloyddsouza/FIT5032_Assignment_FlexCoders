@@ -5,11 +5,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom" style="height:100px;">
+    <h1>Bookings</h1>
+</div>
 
 <div id="calendar"></div>
 <div style="display: none">
@@ -34,14 +33,14 @@
 
         @foreach (var item in Model)
         {
-            <tr  class="events">
+            <tr class="events">
                 <td>
                     @Html.DisplayFor(modelItem => item.userID)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.workshopID)
                 </td>
-                <td  class="start">
+                <td class="start">
                     @Html.DisplayFor(modelItem => item.dateAndTime)
                 </td>
                 <td class="title">
@@ -59,5 +58,5 @@
 </div>
 
 @section Scripts {
- @Scripts.Render("~/bundles/fullcalendar")
+    @Scripts.Render("~/bundles/fullcalendar")
 }

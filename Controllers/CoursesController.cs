@@ -7,6 +7,10 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FlexCoders_Assignment.Models;
+/*
+ *  Author Flloyd Dsouza
+ *  This controller manages the Courses
+ */
 
 namespace FlexCoders_Assignment.Controllers
 {
@@ -49,6 +53,7 @@ namespace FlexCoders_Assignment.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(true)]
         [Authorize(Roles = "Administrator")]
         public ActionResult Create([Bind(Include = "Id,CourseName,CourseDescription,DateUpdated,Contributers,Language,DifficultyLevel,ImageURL")] Course course)
         {
@@ -86,6 +91,7 @@ namespace FlexCoders_Assignment.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(true)]
         [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "Id,CourseName,CourseDescription,DateUpdated,Contributers,Language,DifficultyLevel,ImageURL")] Course course)
         {

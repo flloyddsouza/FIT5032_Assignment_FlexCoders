@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+/*
+ *  Author Flloyd Dsouza
+ */
 namespace FlexCoders_Assignment.Controllers
 {
     [RequireHttps]
@@ -29,6 +31,7 @@ namespace FlexCoders_Assignment.Controllers
         }
 
 
+        // To send Email from contact Page
         [HttpPost]
         public ActionResult Contact(SendEmailViewModel model)
         {

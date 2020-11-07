@@ -7,10 +7,16 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FlexCoders_Assignment.Models;
-
+using FlexCoders_Assignment.Utils;
+using SendGrid.Helpers.Mail;
+/*
+ *  Author Flloyd Dsouza
+ *  This controller manages the aspNetUser
+ *  IT can be accessed by Admin only
+ */
 namespace FlexCoders_Assignment.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Administrator")]
     public class AspNetUsersController : Controller
     {
         private Model2Container db = new Model2Container();
@@ -36,6 +42,8 @@ namespace FlexCoders_Assignment.Controllers
             return View(aspNetUser);
         }
 
+
+
         // GET: AspNetUsers/Create
         public ActionResult Create()
         {
@@ -46,6 +54,7 @@ namespace FlexCoders_Assignment.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateInput(true)]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] AspNetUser aspNetUser)
         {
@@ -78,6 +87,7 @@ namespace FlexCoders_Assignment.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [ValidateInput(true)]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Email,EmailConfirmed,PasswordHash,SecurityStamp,PhoneNumber,PhoneNumberConfirmed,TwoFactorEnabled,LockoutEndDateUtc,LockoutEnabled,AccessFailedCount,UserName")] AspNetUser aspNetUser)
         {
@@ -115,6 +125,60 @@ namespace FlexCoders_Assignment.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult SendEmailAll()
+        {
+            return View(new SendEmailViewModel());
+        }
+
+
+        //Method that sends Bulk Email
+        [HttpPost]
+        public ActionResult SendEmailAll(SendEmailViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+
+
+                    List<AspNetUser> userlist = db.AspNetUsers.ToList();
+                    var toEmails = new List<EmailAddress>();
+
+                    for (int i=0; i<userlist.Count; i++)
+                    {
+                        var to = new EmailAddress(userlist[i].Email, "");
+
+                        toEmails.Add(to);
+                    }
+
+                    String subject = model.Subject;
+                    String contents = model.Contents;
+
+                    EmailSender es = new EmailSender();
+
+                    
+
+                    es.sendMultipleEmail(subject,contents,toEmails);
+
+
+                    ViewBag.Result = "Email has been send.";
+
+                    ModelState.Clear();
+
+                    return View(new SendEmailViewModel());
+                }
+                catch
+                {
+                    return View();
+                }
+            }
+
+            return View();
+        }
+
+
+
 
         protected override void Dispose(bool disposing)
         {

@@ -10,7 +10,7 @@ namespace FlexCoders_Assignment.Models
         public class SendEmailViewModel
         {
             [Display(Name = "Email address")]
-            [Required(ErrorMessage = "Please enter an email address.")]
+            //[Required(ErrorMessage = "Please enter an email address.")]
             [EmailAddress(ErrorMessage = "Invalid Email Address")]
             public string ToEmail { get; set; }
 
