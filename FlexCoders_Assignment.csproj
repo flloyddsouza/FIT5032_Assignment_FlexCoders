@@ -699,6 +699,7 @@
     <Content Include="Views\AspNetUsers\Edit.cshtml" />
     <Content Include="Views\AspNetUsers\Index.cshtml" />
     <Content Include="Views\AspNetUsers\SendEmailAll.cshtml" />
+    <Content Include="Views\Bookings\Create.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
